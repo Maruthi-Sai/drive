@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'drive.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('DB_USER'),
+        'PASSWORD': get_secret('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
