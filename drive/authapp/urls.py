@@ -1,5 +1,7 @@
-from django.urls import path
-
+from django.urls import path, include
 
 app_name = 'authapp'
-urlpatterns = []
+urlpatterns = [
+    path('', include('djoser.urls')),
+    path('', include('djoser.urls.authtoken')),
+]
