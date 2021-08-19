@@ -1,7 +1,6 @@
 from django.db import models
-from djoser.serializers import UserCreateSerializer, UserSerializer
-from rest_framework import Serializers
-from .models import User
+from djoser.serializers import UserCreateSerializer
+from authapp.models import User
 
 
 class UserCreateSerializer(UserCreateSerializer):
