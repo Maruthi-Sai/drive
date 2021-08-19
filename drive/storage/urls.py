@@ -1,4 +1,8 @@
-from django.urls import path
+from django.urls import path, include
+
 
 app_name='storage'
-urlpatterns = []
+
+urlpatterns = [
+    path('api/', include('storage.api.urls')),
+]
