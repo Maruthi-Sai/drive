@@ -12,7 +12,7 @@ def upload_file(instance,filename):
 class DriveFolder(models.Model):
     name            = models.CharField(max_length=255, null=True)
     file            = models.FileField(upload_to=upload_file, max_length=255, null=True)
-    owner           = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='folder', on_delete=models.CASCADE)
+    owner           = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='folder', null=True, on_delete=models.CASCADE)
     parent          = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
     is_folder       = models.BooleanField(default=False)
     is_super        = models.BooleanField(default=False)

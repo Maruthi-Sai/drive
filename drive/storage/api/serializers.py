@@ -5,5 +5,5 @@ from storage.models import DriveFolder
 class DriveFolderSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriveFolder
-        fields = '__all__'
+        fields = ['id', 'name', 'file', 'is_folder', 'created_on', 'updated_on']
         
