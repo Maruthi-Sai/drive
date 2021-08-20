@@ -24,11 +24,13 @@ class DriveFolderApiView(APIView):
     def put(self, request, folder_id, format=None):
         id = request.data['id']
         folder = get_object_or_404(DriveFolder, pk=id)
-        serializer = DriveFolderSerializer(folder, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if folder.is_folder:
+            serializer = DriveFolderSerializer(folder, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, folder_id, format=None):
         id = request.data['id']
